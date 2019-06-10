@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">Logo</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a
+        class="nav-item nav-link"
+        [routerLink]="['/product']"
+        routerLinkActive="active"
+        >Products</a
+      >
+      <a
+        class="nav-item nav-link"
+        [routerLink]="['/shop']"
+        routerLinkActive="active"
+        >Shop</a
+      >
+    </div>
+  </div>
+  <div class="left">
+    <div class="dropdown show">
+      <a
+        class="btn btn-secondary dropdown-toggle"
+        id="dropdownMenuLink"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Profile
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a
+          class="dropdown-item"
+          href="#"
+          routerLink="/profile"
+          routerLinkActive="active"
+          >Info</a
+        >
+        <a class="dropdown-item" (click)="onSignout()">Sign Out</a>
+      </div>
+    </div>
+  </div>
+</nav>

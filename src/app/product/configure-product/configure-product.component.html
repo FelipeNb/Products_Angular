@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let item of (productListState | async).products;
+            let i = index
+          "
+        >
+          <th>
+            <img [src]="item.img" alt="item.name" width="40pt" />
+          </th>
+          <th>{{ item.name }}</th>
+          <th>{{ item.price }}</th>
+          <th>
+            <button class="btn btn-primary" (click)="onEdit()">Edit</button>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

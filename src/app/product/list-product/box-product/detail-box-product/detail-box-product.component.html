@@ -1,0 +1,29 @@
+<div class="card detail" style="width: 22rem;">
+  <div class="card-body">
+    <h3 class="card-title text-center">{{ recipe.name }}</h3>
+    <img
+      [src]="recipe.img"
+      class="text-center rounded-circle mx-auto d-block"
+      alt="Image"
+      width="50%"
+    />
+    <h5 class="card-subtitle">Portion: {{ recipe.portion }}</h5>
+    <h5 class="card-subtitle">Kcal: {{ recipe.kcal }}</h5>
+    <hr />
+    <h5 class="h5">Ingredients:</h5>
+    <div class="container">
+      <ul>
+        <li *ngFor="let ingredient of recipe.ingredients">
+          {{ ingredient.name }} - ({{ ingredient.amount }})
+        </li>
+      </ul>
+    </div>
+    <hr />
+    <h5 class="h5">How to prepare:</h5>
+    <div class="container">
+      <ul>
+        <li *ngFor="let step of recipe.howPrepare">{{ step.name }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
