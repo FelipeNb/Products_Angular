@@ -36,6 +36,26 @@ export function productReducer(state = initialState, action: ProductAction.Produ
         products: [...state.products, action.payload]
       };
     }
+    case ProductAction.REMOVE_PRODUCT: {
+      return {
+        ...state,
+        products: state.products.splice(action.payload,1)
+      };
+    }
+    case ProductAction.START_EDIT: {
+      return {
+        ...state,
+        editedProductIndex: action.payload,
+        editedProduct: state.products[action.payload]
+      };
+    }
+    case ProductAction.STOP_EDIT: {
+      return {
+        ...state,
+        editedProductIndex: -1,
+        editedProduct: null
+      };
+    }
     default: {
       return state;
     }
