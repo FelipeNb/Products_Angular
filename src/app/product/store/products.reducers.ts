@@ -18,7 +18,8 @@ export interface State {
 const initialState: State = {
   products: [
     new Product('Apple', 'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg', 2.50, new Recipe('Apple Pie', 'https://tmbidigitalassetsazure.blob.core.windows.net/secure/RMS/attachments/37/1200x1200/exps6086_HB133235C07_19_4b_WEB.jpg', [new Ingredient('Apple', 3)], [{ name: 'Cut the Apples' }, { name: 'Mix together' }], 900, 10)),
-    new Product('Apple', 'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg', 2.50, new Recipe('Apple Pie', 'https://tmbidigitalassetsazure.blob.core.windows.net/secure/RMS/attachments/37/1200x1200/exps6086_HB133235C07_19_4b_WEB.jpg', [new Ingredient('Apple', 3)], [{ name: 'Cut the Apples' }, { name: 'Mix together' }], 900, 10)),
+    new Product('Ap', 'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg', 2.50, new Recipe('Apple Pie', 'https://tmbidigitalassetsazure.blob.core.windows.net/secure/RMS/attachments/37/1200x1200/exps6086_HB133235C07_19_4b_WEB.jpg', [new Ingredient('Apple', 3)], [{ name: 'Cut the Apples' }, { name: 'Mix together' }], 900, 10)),
+    new Product('KKK', 'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg', 2.50, new Recipe('Apple Pie', 'https://tmbidigitalassetsazure.blob.core.windows.net/secure/RMS/attachments/37/1200x1200/exps6086_HB133235C07_19_4b_WEB.jpg', [new Ingredient('Apple', 3)], [{ name: 'Cut the Apples' }, { name: 'Mix together' }], 900, 10)),
   ],
   editedProductIndex: -1,
   editedProduct: null
@@ -37,9 +38,11 @@ export function productReducer(state = initialState, action: ProductAction.Produ
       };
     }
     case ProductAction.REMOVE_PRODUCT: {
+      const oldProducts = [...state.products];
+      oldProducts.splice(action.payload,1);
       return {
         ...state,
-        products: state.products.splice(action.payload,1)
+        products: oldProducts
       };
     }
     case ProductAction.START_EDIT: {
@@ -47,6 +50,19 @@ export function productReducer(state = initialState, action: ProductAction.Produ
         ...state,
         editedProductIndex: action.payload,
         editedProduct: state.products[action.payload]
+      };
+    }
+    case ProductAction.UDPATE_PRODUCT: {
+      const editedProduct = state.products[state.editedProductIndex];
+      const updateProduct = {
+        ...editedProduct,
+        ...action.payload
+      };
+      const editedProducts = [...state.products];
+      editedProducts[state.editedProductIndex] = updateProduct;
+      return {
+        ...state,
+        products: editedProducts
       };
     }
     case ProductAction.STOP_EDIT: {

@@ -1,6 +1,8 @@
 <div class="container">
   <form (ngSubmit)="onSubmit()" [formGroup]="productForm">
-    <div class="row">
+      <button class="btn btn-success" type="submit">{{ btnLabel }}</button>
+      <hr />
+      <div class="row">
       <div class="col-8">
         <h4 class="h4">Product</h4>
         <label for="product_name">Name</label>
@@ -39,7 +41,6 @@
           *ngIf="productForm.value.productImg == ''"
           class="align-self-center"
         >
-          Image preview
         </h6>
       </div>
     </div>
@@ -93,55 +94,53 @@
         </div>
       </div>
       <hr />
-      <h4 class="h4">Recipe</h4>
-
-      <div class="row">
-        <div class="col-xs-12" formArrayName="ingredients">
+      <h4 class="h4">Ingredients</h4>
+      <div class="container" formArrayName="ingredients">
           <div
-            class="row"
+            class="form-inline"
             style="margin-top: 10px;"
             *ngFor="let ingredient of getIngredientsControls(); let i = index"
             [formGroupName]="i"
           >
-            <div class="col-xs-8">
+            <div class="form-group mb-2">
+              <label>Name:</label>
               <input type="text" class="form-control" formControlName="name" />
             </div>
-            <div class="col-xs-2">
-              <input
+            <div class="form-group mx-sm-3 mb-2">
+                <label>Amount:</label>
+                <input
                 type="number"
                 class="form-control"
                 formControlName="amount"
-              />
+                />
             </div>
-            <div class="col-xs-2">
               <button
                 type="button"
-                class="btn btn-danger"
+                class="btn btn-danger mb-2"
                 (click)="onDeleteIngredient(i)"
               >
                 X
               </button>
-            </div>
-          </div>
         </div>
+        <hr>
+        <button type="button" class="btn btn-success" (click)="onAddIngredient()">
+            Add ingredient
+          </button>
       </div>
 
       <hr />
       <h4 class="h4">How to prepare</h4>
 
-      <div class="row">
-        <div class="col-xs-12" formArrayName="howPrepare">
+        <div class="container" id="howToPrepare" formArrayName="howPrepare">
           <div
-            class="row"
+            class="row form-inline"
             style="margin-top: 10px;"
             *ngFor="let step of getHowPrepareControls(); let j = index"
             [formGroupName]="j"
           >
-            <div class="col-xs-10">
+            <div class="form-group">
+              <label>Step - {{j+1}}</label>
               <input type="text" class="form-control" formControlName="name" />
-            </div>
-
-            <div class="col-xs-2">
               <button
                 type="button"
                 class="btn btn-danger"
@@ -150,19 +149,17 @@
                 X
               </button>
             </div>
-          </div>
         </div>
       </div>
     </div>
-
-    <button type="button" class="btn btn-success" (click)="onAddIngredient()">
-      Add ingredient
-    </button>
+    
+    
+    <hr>
     <button type="button" class="btn btn-success" (click)="onAddStep()">
-      Add step
-    </button>
+        Add step
+      </button>
+    
 
-    <hr />
-    <button class="btn btn-success" type="submit">{{ btnLabel }}</button>
+    
   </form>
 </div>

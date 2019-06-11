@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Product } from '../product.model';
@@ -7,48 +7,58 @@ import * as ProductAction from '../store/products.actions';
 
 import { Recipe } from '../recipe.model';
 import { Ingredient } from '../ingredients.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
   styleUrls: ['./edit-product.component.css']
 })
-export class EditProductComponent implements OnInit {
+export class EditProductComponent implements OnInit, OnDestroy {
 
   @ViewChild('f') slForm: NgForm;
   btnLabel = 'Create';
   editMode = false;
-  editProduct :Product;
+  editProduct: Product;
+  subscription: Subscription;
   productForm: FormGroup;
   constructor(
     private store: Store<fromApp.AppState>,
-    private route: ActivatedRoute
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.store.select('productList').subscribe(
+    this.subscription = this.store.select('productList').subscribe(
       data => {
-        console.log(data);
         this.editMode = data.editedProductIndex != -1;
-        this.editProduct = data.editedProduct;
+        if(this.editMode){
+          this.editProduct = data.editedProduct;
+          this.btnLabel = 'Edit';
+        }
       }
     );
     this.initForm();
   }
 
+  ngOnDestroy(){
+    this.store.dispatch(new ProductAction.StopEdit());
+    this.subscription.unsubscribe();
+  }
+
   initForm() {
-    let productName = null;
-    let productPrice = null;
-    let productImg = null;
+    let productName: string;
+    let productPrice: number;
+    let productImg: string = '';
 
     let recipeIngredients = new FormArray([]);
     let recipeHowPrepare = new FormArray([]);
 
-    let recipeName = null;
-    let recipeImg = null;
-    let recipeKcal = null;
-    let recipePortion = null;
+    let recipeName: string;
+    let recipeImg: string= '';
+    let recipeKcal: number;
+    let recipePortion: number;
 
     if(this.editMode){
       productName = this.editProduct.name;
@@ -125,11 +135,9 @@ export class EditProductComponent implements OnInit {
   }
 
   onSubmit() {
-
     const productName = this.productForm.value.productName;
     const productImg = this.productForm.value.productImg;
     const productPrice = this.productForm.value.productPrice;
-
     const productRecipe = this.productForm.value.productRecipe;
     const recipeName = productRecipe.recipeName;
     const recipeImg = productRecipe.recipeImg;
@@ -137,11 +145,14 @@ export class EditProductComponent implements OnInit {
     const recipePortion = productRecipe.recipePortion;
     const howPrepare = productRecipe.howPrepare as { name: string }[];
     const ingredients = productRecipe.ingredients as Ingredient[];
-
     const recipe = new Recipe(recipeName, recipeImg, ingredients, howPrepare, recipeKcal, recipePortion);
-
     const newProduct = new Product(productName, productImg, productPrice, recipe);
-    this.store.dispatch(new ProductAction.CreateProduct(newProduct));
-    this.store.dispatch(new ProductAction.StopEdit());
+
+    if(this.editMode){
+      this.store.dispatch(new ProductAction.UpdateProduct(newProduct));
+    }else{
+      this.store.dispatch(new ProductAction.CreateProduct(newProduct));
+    }
+    this.router.navigate(['product']);
   }
 }

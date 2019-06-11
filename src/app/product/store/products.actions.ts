@@ -15,7 +15,7 @@ export class CreateProduct implements Action {
 
 export class UpdateProduct implements Action {
   readonly type = UDPATE_PRODUCT;
-  constructor(public payload: { updatedProduct: Product }) { }
+  constructor(public payload: Product) { }
 }
 
 export class RemoveProduct implements Action {

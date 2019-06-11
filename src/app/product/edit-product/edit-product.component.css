@@ -1,3 +1,15 @@
 .btn {
   margin-left: 2pt;
 }
+
+label {
+  margin-right: 5pt;
+}
+
+/* #howToPrepare {
+  max-height: 300px;
+  scroll-behavior: smooth;
+  scrollbar-width: 5pt;
+  position: fixed;
+  padding: 0;
+} */
