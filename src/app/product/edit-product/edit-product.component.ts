@@ -17,7 +17,7 @@ import { Subscription } from 'rxjs';
 })
 export class EditProductComponent implements OnInit, OnDestroy {
 
-  @ViewChild('f') slForm: NgForm;
+  @ViewChild('f', { static: false }) slForm: NgForm;
   btnLabel = 'Create';
   editMode = false;
   editProduct: Product;

@@ -21,6 +21,10 @@ export class HeaderComponent implements OnInit {
     this.route.navigate([''], { relativeTo: this.router });
   }
 
+  onOpenProfile() {
+    this.route.navigate(['profile']);
+  }
+
   toggleDrop() {
     this.showdrop = !this.showdrop;
   }

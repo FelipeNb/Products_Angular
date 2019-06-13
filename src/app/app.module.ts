@@ -13,11 +13,13 @@ import { environment } from '../environments/environment';
 import { CoreModule } from './core/core.module';
 import { ShopComponent } from './shop/shop.component';
 import { ShopModule } from './shop/shop.module';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
