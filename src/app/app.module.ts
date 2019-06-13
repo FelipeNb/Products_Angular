@@ -29,7 +29,7 @@ import { ProfileComponent } from './profile/profile.component';
     ShopModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    StoreRouterConnectingModule,
+    StoreRouterConnectingModule.forRoot(),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
