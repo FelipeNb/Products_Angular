@@ -16,28 +16,24 @@
       >
     </div>
   </div>
-  <div class="left">
-    <div class="dropdown show">
-      <a
-        class="btn btn-secondary dropdown-toggle"
-        id="dropdownMenuLink"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        Profile
-      </a>
 
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a
-          class="dropdown-item"
-          href="#"
-          routerLink="/profile"
-          routerLinkActive="active"
-          >Info</a
-        >
-        <a class="dropdown-item" (click)="onSignout()">Sign Out</a>
-      </div>
+  <div class="dropdown" [ngClass]="{ show: showdrop }" (click)="toggleDrop()">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      Profile
+    </button>
+    <div
+      class="dropdown-menu"
+      [ngClass]="{ show: showdrop }"
+      aria-labelledby="dropdownMenuButton"
+    >
+      <a class="dropdown-item" (click)="onSignout()">Logout</a>
     </div>
   </div>
 </nav>

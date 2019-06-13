@@ -11,6 +11,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { CoreModule } from './core/core.module';
+import { ShopComponent } from './shop/shop.component';
+import { ShopModule } from './shop/shop.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { CoreModule } from './core/core.module';
     FormsModule,
     CoreModule,
     ProductModule,
+    ShopModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreRouterConnectingModule,

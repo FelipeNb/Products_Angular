@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as fromApp from '../store/app.reducers'
-import { Product } from './product.model';
+import { Product } from '../shared/product.model';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import * as fromApp from '../store/app.reducers';
+import * as ProductActions from '../product/store/products.actions';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class ProductComponent implements OnInit {
   constructor(
     private store: Store<fromApp.AppState>,
     private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
@@ -24,11 +26,12 @@ export class ProductComponent implements OnInit {
   }
 
   onCreate() {
-    this.router.navigate(['/edit']);
+    this.store.dispatch(new ProductActions.StopEdit());
+    this.router.navigate(['/product/edit']);
   }
 
   onConfigure() {
-    this.router.navigate(['/configure']);
+    this.router.navigate(['configure'], { relativeTo: this.route });
   }
 
 }

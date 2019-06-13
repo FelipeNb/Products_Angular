@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Product } from '../product.model';
+import { Product } from '../../shared/product.model';
 import * as fromApp from '../../store/app.reducers';
 import * as ProductAction from '../store/products.actions';
 
@@ -33,7 +33,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
     this.subscription = this.store.select('productList').subscribe(
       data => {
         this.editMode = data.editedProductIndex != -1;
-        if(this.editMode){
+        if (this.editMode) {
           this.editProduct = data.editedProduct;
           this.btnLabel = 'Edit';
         }
@@ -42,7 +42,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
     this.initForm();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.store.dispatch(new ProductAction.StopEdit());
     this.subscription.unsubscribe();
   }
@@ -56,15 +56,15 @@ export class EditProductComponent implements OnInit, OnDestroy {
     let recipeHowPrepare = new FormArray([]);
 
     let recipeName: string;
-    let recipeImg: string= '';
+    let recipeImg: string = '';
     let recipeKcal: number;
     let recipePortion: number;
 
-    if(this.editMode){
+    if (this.editMode) {
       productName = this.editProduct.name;
       productPrice = +this.editProduct.price;
       productImg = this.editProduct.img;
-  
+
       recipeIngredients = new FormArray([]);
 
       this.editProduct.recipe.ingredients.forEach(element => {
@@ -73,7 +73,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
           amount: new FormControl(element.name, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)]),
         }));
       });
-      
+
       recipeHowPrepare = new FormArray([]);
 
       this.editProduct.recipe.howPrepare.forEach(element => {
@@ -81,7 +81,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
           name: new FormControl(element.name, Validators.required),
         }));
       });
-  
+
       recipeName = this.editProduct.recipe.name;
       recipeImg = this.editProduct.recipe.img;
       recipeKcal = +this.editProduct.recipe.kcal;
@@ -148,9 +148,9 @@ export class EditProductComponent implements OnInit, OnDestroy {
     const recipe = new Recipe(recipeName, recipeImg, ingredients, howPrepare, recipeKcal, recipePortion);
     const newProduct = new Product(productName, productImg, productPrice, recipe);
 
-    if(this.editMode){
+    if (this.editMode) {
       this.store.dispatch(new ProductAction.UpdateProduct(newProduct));
-    }else{
+    } else {
       this.store.dispatch(new ProductAction.CreateProduct(newProduct));
     }
     this.router.navigate(['product']);

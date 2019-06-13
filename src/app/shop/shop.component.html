@@ -7,24 +7,23 @@
             <th>Image</th>
             <th>Name</th>
             <th>Price</th>
-            <th></th>
+            <th>Amount</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr
-            *ngFor="
-              let item of (productListState | async).products;
-              let i = index
-            "
-          >
+          <tr *ngFor="let item of (shopListState | async).shops; let i = index">
             <th>
-              <img [src]="item.img" alt="item.name" width="30pt" />
+              <img
+                [src]="item.product.img"
+                alt="item.product.name"
+                width="30pt"
+              />
             </th>
-            <th>{{ item.name }} - {{ i }}</th>
-            <th>{{ item.price }}</th>
+            <th>{{ item.product.name }}</th>
+            <th>{{ item.product.price }}</th>
             <th>
-              <button class="btn btn-primary" (click)="onEdit(i)">Edit</button>
+              <input type="number" class="form-control" [value]="item.amount" />
             </th>
             <th>
               <button class="btn btn-danger" (click)="onDelete(i)">
@@ -35,5 +34,8 @@
         </tbody>
       </table>
     </div>
+    <button class="btn btn-success" (click)="onFinish()">
+      Finish
+    </button>
   </div>
 </div>

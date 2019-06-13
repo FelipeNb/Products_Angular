@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  showdrop = false;
   constructor(
     private route: Router,
     private router: ActivatedRoute,
@@ -18,5 +19,9 @@ export class HeaderComponent implements OnInit {
 
   onSignout() {
     this.route.navigate([''], { relativeTo: this.router });
+  }
+
+  toggleDrop() {
+    this.showdrop = !this.showdrop;
   }
 }

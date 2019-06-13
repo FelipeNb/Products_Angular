@@ -1,12 +1,18 @@
 <div
   class="card"
-  (mouseover)="showDetails = true"
+  (mouseover)="showDetails = false"
   (mouseout)="showDetails = false"
 >
   <div class="card-body text-center">
     <h5 class="card-title">{{ item.name }}</h5>
     <h6 class="card-subtitle mb-2 text-muted">Price: ${{ item.price }}</h6>
     <img [src]="item.img" alt="Image" width="60%" />
+    <span
+      class="badge badge-primary"
+      style="cursor: pointer;"
+      (click)="onAddCar()"
+      >Add</span
+    >
   </div>
   <app-detail-box-product
     [hidden]="!showDetails"

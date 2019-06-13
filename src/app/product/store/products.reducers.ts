@@ -1,18 +1,16 @@
-import { Product } from '../product.model';
+import { Product } from '../../shared/product.model';
 import * as ProductAction from './products.actions';
 import { Recipe } from '../recipe.model';
 import { Ingredient } from '../ingredients.model';
-
-
-export interface AppState {
-  productsList: State;
-}
 
 export interface State {
   products: Product[];
   editedProduct: Product;
   editedProductIndex: number;
+}
 
+export interface AppState {
+  productsList: State;
 }
 
 const initialState: State = {
@@ -29,7 +27,7 @@ const initialState: State = {
 // export const UDPATE_PRODUCT = 'UDPATE_PRODUCT';
 // export const FETCH_PRODUCT = 'FETCH_PRODUCT';
 
-export function productReducer(state = initialState, action: ProductAction.ProductActions): State {
+export function reducer(state = initialState, action: ProductAction.ProductActions): State {
   switch (action.type) {
     case ProductAction.CREATE_PRODUCT: {
       return {
@@ -39,7 +37,7 @@ export function productReducer(state = initialState, action: ProductAction.Produ
     }
     case ProductAction.REMOVE_PRODUCT: {
       const oldProducts = [...state.products];
-      oldProducts.splice(action.payload,1);
+      oldProducts.splice(action.payload, 1);
       return {
         ...state,
         products: oldProducts
@@ -70,6 +68,11 @@ export function productReducer(state = initialState, action: ProductAction.Produ
         ...state,
         editedProductIndex: -1,
         editedProduct: null
+      };
+    }
+    case ProductAction.FETCH_PRODUCT: {
+      return {
+        ...state
       };
     }
     default: {

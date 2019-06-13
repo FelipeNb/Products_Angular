@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as fromApp from '../../store/app.reducers';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { Product } from '../product.model';
+import { Product } from '../../shared/product.model';
 
 
 @Component({
