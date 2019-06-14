@@ -1,7 +1,6 @@
 import { Product } from '../../shared/product.model';
 import * as ProductAction from './products.actions';
-import { Recipe } from '../recipe.model';
-import { Ingredient } from '../ingredients.model';
+import { Recipe } from 'src/app/shared/recipe.model';
 
 export interface State {
   products: Product[];
@@ -15,9 +14,28 @@ export interface AppState {
 
 const initialState: State = {
   products: [
-    new Product('Apple', 'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg', 2.50, new Recipe('Apple Pie', 'https://tmbidigitalassetsazure.blob.core.windows.net/secure/RMS/attachments/37/1200x1200/exps6086_HB133235C07_19_4b_WEB.jpg', [new Ingredient('Apple', 3)], [{ name: 'Cut the Apples' }, { name: 'Mix together' }], 900, 10)),
-    new Product('Ap', 'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg', 2.50, new Recipe('Apple Pie', 'https://tmbidigitalassetsazure.blob.core.windows.net/secure/RMS/attachments/37/1200x1200/exps6086_HB133235C07_19_4b_WEB.jpg', [new Ingredient('Apple', 3)], [{ name: 'Cut the Apples' }, { name: 'Mix together' }], 900, 10)),
-    new Product('KKK', 'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg', 2.50, new Recipe('Apple Pie', 'https://tmbidigitalassetsazure.blob.core.windows.net/secure/RMS/attachments/37/1200x1200/exps6086_HB133235C07_19_4b_WEB.jpg', [new Ingredient('Apple', 3)], [{ name: 'Cut the Apples' }, { name: 'Mix together' }], 900, 10)),
+    new Product(
+      'Apple',
+      'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg',
+      'Fruit',
+      2.50,
+      new Date(),
+      new Date(),
+      new Recipe(
+        'Apple Pie',
+        'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg',
+        [
+          {
+            ingredient: 'Apple',
+            amount: 3
+          }],
+        [
+          { name: 'Mix together' },
+          { name: 'Finished' }
+        ],
+        200,
+        5)
+    ),
   ],
   editedProductIndex: -1,
   editedProduct: null
@@ -32,12 +50,12 @@ export function reducer(state = initialState, action: ProductAction.ProductActio
     case ProductAction.CREATE_PRODUCT: {
       return {
         ...state,
-        products: [...state.products, action.payload]
+        products: [...state.products, action.product]
       };
     }
-    case ProductAction.REMOVE_PRODUCT: {
+    case ProductAction.DELETE_PRODUCT: {
       const oldProducts = [...state.products];
-      oldProducts.splice(action.payload, 1);
+      oldProducts.splice(action.indexProduct, 1);
       return {
         ...state,
         products: oldProducts
@@ -46,15 +64,15 @@ export function reducer(state = initialState, action: ProductAction.ProductActio
     case ProductAction.START_EDIT: {
       return {
         ...state,
-        editedProductIndex: action.payload,
-        editedProduct: state.products[action.payload]
+        editedProductIndex: action.indexProduct,
+        editedProduct: state.products[action.indexProduct]
       };
     }
     case ProductAction.UDPATE_PRODUCT: {
       const editedProduct = state.products[state.editedProductIndex];
       const updateProduct = {
         ...editedProduct,
-        ...action.payload
+        ...action.product
       };
       const editedProducts = [...state.products];
       editedProducts[state.editedProductIndex] = updateProduct;

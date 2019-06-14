@@ -11,9 +11,9 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { CoreModule } from './core/core.module';
-import { ShopComponent } from './shop/shop.component';
 import { ShopModule } from './shop/shop.module';
 import { ProfileComponent } from './profile/profile.component';
+import { RecipeModule } from './recipe/recipe.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
     CoreModule,
     ProductModule,
     ShopModule,
+    RecipeModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreRouterConnectingModule.forRoot(),

@@ -26,7 +26,7 @@ export class ShopComponent implements OnInit {
   }
 
   onDelete(index: number) {
-    this.store.dispatch(new ShopActions.RemoveShop(index));
+    this.store.dispatch(new ShopActions.DeleteShop(index));
   }
 
 }

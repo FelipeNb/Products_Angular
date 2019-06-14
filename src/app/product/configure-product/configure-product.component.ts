@@ -5,7 +5,6 @@ import { Product } from '../../shared/product.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as fromApp from '../../store/app.reducers';
 import * as ProductActions from '../store/products.actions';
-import * as fromProduct from '../store/products.reducers';
 
 @Component({
   selector: 'app-configure-product',
@@ -31,7 +30,7 @@ export class ConfigureProductComponent implements OnInit {
   }
 
   onDelete(index: number) {
-    this.store.dispatch(new ProductActions.RemoveProduct(index));
+    this.store.dispatch(new ProductActions.DeleteProduct(index));
   }
 
 }

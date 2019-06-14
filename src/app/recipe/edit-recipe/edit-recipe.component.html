@@ -1,0 +1,123 @@
+<div class="container">
+  <h4 class="h4">Recipe</h4>
+  <hr />
+
+  <form (onSubmit)="onSubmit()" [formGroup]="recipeForm">
+    <hr />
+    <h4 class="h4">Recipe</h4>
+
+    <div formGroupName="productRecipe">
+      <div class="row">
+        <div class="col-8">
+          <label for="recipe_name">Name</label>
+          <input
+            class="form-control"
+            type="text"
+            name="recipe_name"
+            id="recipe_name"
+            formControlName="recipeName"
+          />
+          <label for="recipe_Kcal">Kcal</label>
+          <input
+            class="form-control"
+            type="number"
+            name="recipe_Kcal"
+            id="recipe_Kcal"
+            formControlName="recipeKcal"
+          />
+          <label for="recipe_Portion">Portion</label>
+          <input
+            class="form-control"
+            type="number"
+            name="recipe_Portion"
+            id="recipe_Portion"
+            formControlName="recipePortion"
+          />
+
+          <label for="recipe_img">Image</label>
+          <input
+            class="form-control"
+            type="text"
+            name="recipe_img"
+            id="recipe_img"
+            formControlName="recipeImg"
+          />
+        </div>
+        <div class="col text-center">
+          <img
+            [src]="recipeForm.value.productRecipe.recipeImg"
+            class="img-responsive rounded text-center"
+            width="80%"
+          />
+        </div>
+      </div>
+      <hr />
+      <h4 class="h4">Ingredients</h4>
+      <div class="container" formArrayName="ingredients">
+        <div
+          class="form-inline"
+          style="margin-top: 10px;"
+          *ngFor="let ingredient of getIngredientsControls(); let i = index"
+          [formGroupName]="i"
+        >
+          <div class="form-group mb-2">
+            <label>Name:</label>
+            <input type="text" class="form-control" formControlName="name" />
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <label>Amount:</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="amount"
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-danger mb-2"
+            (click)="onDeleteIngredient(i)"
+          >
+            X
+          </button>
+        </div>
+        <hr />
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="onAddIngredient()"
+        >
+          Add ingredient
+        </button>
+      </div>
+
+      <hr />
+      <h4 class="h4">How to prepare</h4>
+
+      <div class="container" id="howToPrepare" formArrayName="howPrepare">
+        <div
+          class="row form-inline"
+          style="margin-top: 10px;"
+          *ngFor="let step of getHowPrepareControls(); let j = index"
+          [formGroupName]="j"
+        >
+          <div class="form-group">
+            <label>Step - {{ j + 1 }}</label>
+            <input type="text" class="form-control" formControlName="name" />
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onDeleteStep(j)"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+    <button type="button" class="btn btn-success" (click)="onAddStep()">
+      Add step
+    </button>
+  </form>
+</div>

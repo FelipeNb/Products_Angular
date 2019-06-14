@@ -6,14 +6,19 @@ export const STORE_SHOP = 'STORE_SHOP';
 export const FINISH_SHOP = 'FINISH_SHOP';
 
 export const ADD_SHOP = 'ADD_SHOP';
-export const REMOVE_SHOP = 'REMOVE_SHOP';
+export const DELETE_SHOP = 'DELETE_SHOP';
 export const UPDATE_SHOP = 'UPDATE_SHOP';
-export const START_UPDATE = 'START_UPDATE';
-export const STOP_UPDATE = 'STOP_UPDATE_';
+export const START_EDIT = 'START_EDIT';
+export const STOP_EDIT = 'STOP_EDIT_';
+export const CLEAR_SHOP = 'CLEAR_SHOP';
 
 export class AddShop implements Action {
   readonly type = ADD_SHOP;
-  constructor(public payload: Shop) { }
+  constructor(public shop: Shop) { }
+}
+
+export class ClearShop implements Action {
+  readonly type = CLEAR_SHOP;
 }
 
 export class FetchShop implements Action {
@@ -24,23 +29,23 @@ export class StoreShop implements Action {
   readonly type = STORE_SHOP;
 }
 
-export class RemoveShop implements Action {
-  readonly type = REMOVE_SHOP;
-  constructor(public payload: number) { }
+export class DeleteShop implements Action {
+  readonly type = DELETE_SHOP;
+  constructor(public indexShop: number) { }
 }
 
 export class UpdateShop implements Action {
   readonly type = UPDATE_SHOP;
-  constructor(public payload: { updatedProduct: Shop }) { }
+  constructor(public updatedShop: Shop) { }
 }
 
-export class StartUpdate implements Action {
-  readonly type = START_UPDATE;
-  constructor(public payload: number) { }
+export class StartEdit implements Action {
+  readonly type = START_EDIT;
+  constructor(public indexShop: number) { }
 }
 
-export class StopUpdate implements Action {
-  readonly type = STOP_UPDATE;
+export class StopEdit implements Action {
+  readonly type = STOP_EDIT;
 }
 
 export class FinishShop implements Action {
@@ -50,9 +55,10 @@ export class FinishShop implements Action {
 export type ShopActions
   = FetchShop
   | AddShop
+  | ClearShop
   | StoreShop
-  | RemoveShop
+  | DeleteShop
   | UpdateShop
-  | StartUpdate
-  | StopUpdate
+  | StartEdit
+  | StopEdit
   | FinishShop;

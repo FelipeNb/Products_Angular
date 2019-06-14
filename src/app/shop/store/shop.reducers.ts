@@ -20,20 +20,20 @@ const initialState: State = {
 
 export function reducer(state = initialState, action: ShopActions.ShopActions): State {
   switch (action.type) {
-    case ShopActions.START_UPDATE: {
+    case ShopActions.START_EDIT: {
       return {
         ...state,
-        editedShopIndex: action.payload,
-        editedShop: state.shops[action.payload]
+        editedShopIndex: action.indexShop,
+        editedShop: state.shops[action.indexShop]
       };
     }
     case ShopActions.ADD_SHOP: {
       return {
         ...state,
-        shops: [...state.shops, action.payload]
+        shops: [...state.shops, action.shop]
       };
     }
-    case ShopActions.STOP_UPDATE: {
+    case ShopActions.STOP_EDIT: {
       return {
         ...state,
         editedShop: null,
@@ -44,7 +44,7 @@ export function reducer(state = initialState, action: ShopActions.ShopActions): 
       const selectedShop = state.shops[state.editedShopIndex];
       const changedShop = {
         ...selectedShop,
-        ...action.payload.updatedProduct
+        ...action.updatedShop
       };
       const updatedShop = [...state.shops];
       updatedShop[state.editedShopIndex] = changedShop;
@@ -53,9 +53,9 @@ export function reducer(state = initialState, action: ShopActions.ShopActions): 
         shops: updatedShop
       };
     }
-    case ShopActions.REMOVE_SHOP: {
+    case ShopActions.DELETE_SHOP: {
       const oldShops = [...state.shops];
-      oldShops.splice(action.payload, 1);
+      oldShops.splice(action.indexShop, 1);
       return {
         ...state,
         shops: oldShops
