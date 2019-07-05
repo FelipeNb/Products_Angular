@@ -72,6 +72,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
 
     if (this.editMode) {
       newProduct.dateUpdate = this.editProduct.dateInserted;
+      newProduct.recipe = this.editProduct.recipe;
       this.store.dispatch(new ProductAction.UpdateProduct(newProduct));
     } else {
       this.store.dispatch(new ProductAction.CreateProduct(newProduct));

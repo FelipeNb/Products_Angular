@@ -8,6 +8,7 @@ import { BoxProductComponent } from './list-product/box-product/box-product.comp
 import { DetailBoxProductComponent } from './list-product/box-product/detail-box-product/detail-box-product.component';
 import { ProductRoutingModule } from './products-routing.module';
 import { ConfigureProductComponent } from './configure-product/configure-product.component';
+import { AngularMaterialModule } from '../shared/angular.material.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ConfigureProductComponent } from './configure-product/configure-product
     CommonModule,
     FormsModule,
     ProductRoutingModule,
+    AngularMaterialModule,
     ReactiveFormsModule
   ],
   exports: [],

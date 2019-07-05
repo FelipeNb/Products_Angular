@@ -36,6 +36,50 @@ const initialState: State = {
         200,
         5)
     ),
+    new Product(
+      'Apple',
+      'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg',
+      'Fruit',
+      2.50,
+      new Date(),
+      new Date(),
+      new Recipe(
+        'Apple Pie',
+        'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg',
+        [
+          {
+            ingredient: 'Apple',
+            amount: 3
+          }],
+        [
+          { name: 'Mix together' },
+          { name: 'Finished' }
+        ],
+        200,
+        5)
+    ),
+    new Product(
+      'Apple',
+      'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg',
+      'Fruit',
+      2.50,
+      new Date(),
+      new Date(),
+      new Recipe(
+        'Apple Pie',
+        'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg',
+        [
+          {
+            ingredient: 'Apple',
+            amount: 3
+          }],
+        [
+          { name: 'Mix together' },
+          { name: 'Finished' }
+        ],
+        200,
+        5)
+    ),
   ],
   editedProductIndex: -1,
   editedProduct: null

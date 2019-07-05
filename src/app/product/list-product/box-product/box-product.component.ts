@@ -26,4 +26,5 @@ export class BoxProductComponent implements OnInit {
     const shopItem = new Shop(this.item, 1);
     this.store.dispatch(new ShopActions.AddShop(shopItem));
   }
+
 }

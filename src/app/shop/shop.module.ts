@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShopRoutingModule } from './shop-routing.module';
 import { ShopComponent } from './shop.component';
+import { AngularMaterialModule } from '../shared/angular.material.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { ShopComponent } from './shop.component';
   ],
   imports: [
     CommonModule,
-    ShopRoutingModule
+    ShopRoutingModule,
+    AngularMaterialModule
   ],
   exports: [],
   providers: [],

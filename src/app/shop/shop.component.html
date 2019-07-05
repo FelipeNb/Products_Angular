@@ -26,7 +26,10 @@
               <input type="number" class="form-control" [value]="item.amount" />
             </th>
             <th>
-              <button class="btn btn-danger" (click)="onDelete(i)">
+              <button
+                cmat-raised-button color="accent"
+                (click)="onDelete(i)"
+              >
                 Delete
               </button>
             </th>
@@ -34,7 +37,7 @@
         </tbody>
       </table>
     </div>
-    <button class="btn btn-success" (click)="onFinish()">
+    <button mat-raised-button color="primary" (click)="onFinish()">
       Finish
     </button>
   </div>

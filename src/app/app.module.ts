@@ -14,6 +14,8 @@ import { CoreModule } from './core/core.module';
 import { ShopModule } from './shop/shop.module';
 import { ProfileComponent } from './profile/profile.component';
 import { RecipeModule } from './recipe/recipe.module';
+import { AngularMaterialModule } from './shared/angular.material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,10 +30,12 @@ import { RecipeModule } from './recipe/recipe.module';
     ProductModule,
     ShopModule,
     RecipeModule,
+    AngularMaterialModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreRouterConnectingModule.forRoot(),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

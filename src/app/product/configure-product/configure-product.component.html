@@ -21,13 +21,15 @@
             <th>
               <img [src]="item.img" alt="item.name" width="30pt" />
             </th>
-            <th>{{ item.name }} - {{ i }}</th>
+            <th>{{ item.name }}</th>
             <th>{{ item.price }}</th>
             <th>
-              <button class="btn btn-primary" (click)="onEdit(i)">Edit</button>
+              <button mat-raised-button color="accent" (click)="onEdit(i)">
+                Edit
+              </button>
             </th>
             <th>
-              <button class="btn btn-danger" (click)="onDelete(i)">
+              <button mat-raised-button color="warn" (click)="onDelete(i)">
                 Delete
               </button>
             </th>

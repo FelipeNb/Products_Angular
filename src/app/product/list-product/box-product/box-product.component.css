@@ -1,5 +1,9 @@
 .card {
   width: 15rem;
-  height: 15rem;
+  /* height: 18rem;  */
   margin: 2pt;
+}
+
+.img {
+  width: 70%;
 }

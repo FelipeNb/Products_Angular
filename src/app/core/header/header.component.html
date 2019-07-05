@@ -23,24 +23,11 @@
     </div>
   </div>
 
-  <div class="dropdown" [ngClass]="{ show: showdrop }" (click)="toggleDrop()">
-    <button
-      class="btn btn-secondary dropdown-toggle"
-      type="button"
-      id="dropdownMenuButton"
-      data-toggle="dropdown"
-      aria-haspopup="true"
-      aria-expanded="false"
-    >
-      Profile
-    </button>
-    <div
-      class="dropdown-menu"
-      [ngClass]="{ show: showdrop }"
-      aria-labelledby="dropdownMenuButton"
-    >
-      <a class="dropdown-item pointer" (click)="onOpenProfile()">My Profile</a>
-      <a class="dropdown-item pointer" (click)="onSignout()">Logout</a>
-    </div>
-  </div>
+  <button mat-raised-button [matMenuTriggerFor]="menu">
+    Profile
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onOpenProfile()">My Profile</button>
+    <button mat-menu-item (click)="onSignout()">Logout</button>
+  </mat-menu>
 </nav>

@@ -13,8 +13,8 @@
     <h5 class="h5">Ingredients:</h5>
     <div class="container">
       <ul>
-        <li *ngFor="let ingredient of recipe.ingredients">
-          {{ ingredient.name }} - ({{ ingredient.amount }})
+        <li *ngFor="let ingredientObj of recipe.ingredients">
+          {{ ingredientObj.ingredient }} - ({{ ingredientObj.amount }})
         </li>
       </ul>
     </div>
