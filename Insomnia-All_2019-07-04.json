@@ -1,0 +1,138 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2019-07-05T00:44:01.966Z",
+	"__export_source": "insomnia.desktop.app:v6.3.2",
+	"resources": [
+		{
+			"_id": "wrk_fdbd8646ee364737b9ab5c847bab9404",
+			"created": 1555114792482,
+			"description": "",
+			"modified": 1555114792482,
+			"name": "Insomnia",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_bc046ecc88d04da89d91fa6e1fd4a786",
+			"color": null,
+			"created": 1555114792521,
+			"data": {
+				"base_url": "http://localhost:60218/api/"
+			},
+			"isPrivate": false,
+			"metaSortKey": 1555114792521,
+			"modified": 1562284981258,
+			"name": "New Environment",
+			"parentId": "wrk_fdbd8646ee364737b9ab5c847bab9404",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_f6930b3954264d54a99773b63e19c8f6",
+			"cookies": [],
+			"created": 1555114792527,
+			"modified": 1555114792527,
+			"name": "Default Jar",
+			"parentId": "wrk_fdbd8646ee364737b9ab5c847bab9404",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_3817368402e34c7e9231d0a46414edac",
+			"created": 1562247522119,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1562247522119,
+			"modified": 1562247522119,
+			"name": "productProject",
+			"parentId": "wrk_fdbd8646ee364737b9ab5c847bab9404",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_6ee67a041f9f4ac083a2282d12747ad0",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\tname: 'Apple',\n\tprice: 5.00,\n\timg:'https://images-na.ssl-images-amazon.com/images/I/71KKBVXup3L._SL1500_.jpg'\n}"
+			},
+			"created": 1562285106998,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7819e9c4dda04916982e8da21564036b",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1562285106998,
+			"method": "POST",
+			"modified": 1562286811643,
+			"name": "CreateProduct",
+			"parameters": [],
+			"parentId": "fld_3817368402e34c7e9231d0a46414edac",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}products/",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7da5aee9f9c14c2fb00eb4baa9abf891",
+			"authentication": {},
+			"body": {},
+			"created": 1562285155742,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1562285106948,
+			"method": "GET",
+			"modified": 1562287090716,
+			"name": "GetAllRecipes",
+			"parameters": [],
+			"parentId": "fld_3817368402e34c7e9231d0a46414edac",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}products",
+			"_type": "request"
+		},
+		{
+			"_id": "req_56b786f7c9fc442595122f262f63a43f",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\"query\":\"\"}"
+			},
+			"created": 1562286912190,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2e4e7e9d2e1e48b0a65971deec640c1e",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1562286912190,
+			"method": "POST",
+			"modified": 1562287350675,
+			"name": "UpdateProduct",
+			"parameters": [],
+			"parentId": "fld_3817368402e34c7e9231d0a46414edac",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}products",
+			"_type": "request"
+		}
+	]
+}
