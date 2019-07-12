@@ -38,5 +38,7 @@ namespace APIProducts.Services
 
     public void Remove(string id) =>
         _products.DeleteOne(product => product.id == id);
+
+    public Product GetProducts { get; set; }
   }
 }

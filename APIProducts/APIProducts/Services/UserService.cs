@@ -24,8 +24,15 @@ namespace APIProducts.Services
 
     public List<Shop> GetShopFromUser(string id)
     {
-      _user.Find<User>(user => user.id == id);
-      return null;
+      var aggregateResult = _user.Aggregate()
+        .Match(p => p.id == id)
+        .Lookup(
+            foreignCollection: typeof(Product),
+            localField: l => l.id,
+            foreignField: f => f.id,
+            @as: (AggregateQueriesProduct a) => a.GetProducts
+         ).toList();
+      return aggregateResult;
     }
 
     public User Get(string id) =>
@@ -44,15 +51,6 @@ namespace APIProducts.Services
     public User Create(User user)
     {
       _user.InsertOne(user);
-      var aggregateResult = _user.Aggregate()
-        .Match(p => p.id == user.id)
-        .Lookup(
-            foreignCollection: ,
-            localField: l => l.shops.id,
-            foreignField: f => f.id,
-            @as: (AggregateQueriesProduct a) => a.GetProducts
-         )
-        .toList();
       return user;
     }
 

@@ -5,10 +5,6 @@ namespace APIProducts.Queries
 {
   public class AggregateQueriesProduct : UserService
   {
-    public AggregateQueriesProduct()
-    {
-      
-    }
     public Product GetProducts { get; set; }
   }
 } 
