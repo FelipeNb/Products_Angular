@@ -1,6 +1,5 @@
 import { Product } from '../../shared/product.model';
 import * as ProductAction from './products.actions';
-import { Recipe } from 'src/app/shared/recipe.model';
 
 export interface State {
   products: Product[];
@@ -13,74 +12,7 @@ export interface AppState {
 }
 
 const initialState: State = {
-  products: [
-    new Product(
-      'Apple',
-      'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg',
-      'Fruit',
-      2.50,
-      new Date(),
-      new Date(),
-      new Recipe(
-        'Apple Pie',
-        'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg',
-        [
-          {
-            ingredient: 'Apple',
-            amount: 3
-          }],
-        [
-          { name: 'Mix together' },
-          { name: 'Finished' }
-        ],
-        200,
-        5)
-    ),
-    new Product(
-      'Apple',
-      'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg',
-      'Fruit',
-      2.50,
-      new Date(),
-      new Date(),
-      new Recipe(
-        'Apple Pie',
-        'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg',
-        [
-          {
-            ingredient: 'Apple',
-            amount: 3
-          }],
-        [
-          { name: 'Mix together' },
-          { name: 'Finished' }
-        ],
-        200,
-        5)
-    ),
-    new Product(
-      'Apple',
-      'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg',
-      'Fruit',
-      2.50,
-      new Date(),
-      new Date(),
-      new Recipe(
-        'Apple Pie',
-        'https://i5.walmartimages.ca/images/Large/094/514/6000200094514.jpg',
-        [
-          {
-            ingredient: 'Apple',
-            amount: 3
-          }],
-        [
-          { name: 'Mix together' },
-          { name: 'Finished' }
-        ],
-        200,
-        5)
-    ),
-  ],
+  products: [],
   editedProductIndex: -1,
   editedProduct: null
 };
@@ -95,6 +27,12 @@ export function reducer(state = initialState, action: ProductAction.ProductActio
       return {
         ...state,
         products: [...state.products, action.product]
+      };
+    }
+    case ProductAction.SET_PRODUCTS: {
+      return {
+        ...state,
+        products: [...action.product]
       };
     }
     case ProductAction.DELETE_PRODUCT: {
@@ -130,11 +68,6 @@ export function reducer(state = initialState, action: ProductAction.ProductActio
         ...state,
         editedProductIndex: -1,
         editedProduct: null
-      };
-    }
-    case ProductAction.FETCH_PRODUCT: {
-      return {
-        ...state
       };
     }
     default: {

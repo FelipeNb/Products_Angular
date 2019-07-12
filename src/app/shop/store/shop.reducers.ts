@@ -1,4 +1,4 @@
-import { Shop } from '../shop.model';
+import { Shop } from '../../shared/shop.model';
 import * as ShopActions from '../store/shop.actions';
 
 
@@ -31,6 +31,12 @@ export function reducer(state = initialState, action: ShopActions.ShopActions): 
       return {
         ...state,
         shops: [...state.shops, action.shop]
+      };
+    }
+    case ShopActions.SET_SHOP: {
+      return {
+        ...state,
+        shops: [...action.shop]
       };
     }
     case ShopActions.STOP_EDIT: {

@@ -30,24 +30,24 @@ namespace APIProducts.Controllers
 
     // GET: api/Product/5
     [HttpGet("{id}", Name = "Get")]
-    public string Get(int id)
+    public ActionResult<Product> Get(string id)
     {
-      return "value";
+      return _productService.Get(id);
     }
 
     // POST: api/Product
     [HttpPost]
-    public void Create(Product product)
+    public ActionResult<Product> Create(Product product)
     {
-      _productService.Create(product);
+      return _productService.Create(product);
     }
 
 
     // PUT: api/Product/5
-    [HttpPut("{id}")]
-    public void Put(string id, Product updatedProduct)
+    [HttpPut]
+    public void Put(Product updatedProduct)
     {
-      _productService.Update(id, updatedProduct);
+      _productService.Update(updatedProduct.id.ToString(), updatedProduct);
     }
 
     // DELETE: api/ApiWithActions/5

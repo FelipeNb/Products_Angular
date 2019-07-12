@@ -29,8 +29,8 @@ export class ConfigureProductComponent implements OnInit {
     this.router.navigate(['../edit'], { relativeTo: this.route });
   }
 
-  onDelete(index: number) {
-    this.store.dispatch(new ProductActions.DeleteProduct(index));
+  onDelete(index: number, item: Product) {
+    this.store.dispatch(new ProductActions.DeleteProduct(index, item));
   }
 
 }

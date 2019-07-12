@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeRoutingModule } from './recipe-routing.module';
 import { RecipeComponent } from './recipe.component';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
+import { AngularMaterialModule } from '../shared/angular.material.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
   ],
   imports: [
     CommonModule,
+    AngularMaterialModule,
     FormsModule,
     ReactiveFormsModule,
     RecipeRoutingModule

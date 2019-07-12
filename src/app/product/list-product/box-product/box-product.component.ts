@@ -3,7 +3,7 @@ import { Product } from '../../../shared/product.model';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/app.reducers';
 import * as ShopActions from '../../../shop/store/shop.actions';
-import { Shop } from 'src/app/shop/shop.model';
+import { Shop } from 'src/app/shared/shop.model';
 
 @Component({
   selector: 'app-box-product',

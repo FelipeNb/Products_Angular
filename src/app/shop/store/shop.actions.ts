@@ -1,9 +1,10 @@
 import { Action } from '@ngrx/store';
-import { Shop } from '../shop.model';
+import { Shop } from '../../shared/shop.model';
 
 export const FETCH_SHOP = 'FETCH_SHOP';
 export const STORE_SHOP = 'STORE_SHOP';
 export const FINISH_SHOP = 'FINISH_SHOP';
+export const SET_SHOP = 'SET_SHOP';
 
 export const ADD_SHOP = 'ADD_SHOP';
 export const DELETE_SHOP = 'DELETE_SHOP';
@@ -15,6 +16,11 @@ export const CLEAR_SHOP = 'CLEAR_SHOP';
 export class AddShop implements Action {
   readonly type = ADD_SHOP;
   constructor(public shop: Shop) { }
+}
+
+export class SetShop implements Action {
+  readonly type = SET_SHOP;
+  constructor(public shop: Shop[]) { }
 }
 
 export class ClearShop implements Action {
@@ -55,6 +61,7 @@ export class FinishShop implements Action {
 export type ShopActions
   = FetchShop
   | AddShop
+  | SetShop
   | ClearShop
   | StoreShop
   | DeleteShop

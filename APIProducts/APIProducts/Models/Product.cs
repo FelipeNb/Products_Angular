@@ -8,12 +8,12 @@ namespace APIProducts.Models
   {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
-    public string Name { get; set; }
-    public string Type { get; set; }
-    public string Price { get; set; }
-    public Recipe Recipe { get; set; }
-    public string DateInserted { get; set; }
-    public string DateUpdate { get; set; }
+    public string id { get; set; }
+    public string name { get; set; }
+    public string img { get; set; }
+    public string type { get; set; }
+    public string price { get; set; }
+    public string dateInserted { get; set; }
+    public string dateUpdate { get; set; }
   }
 }

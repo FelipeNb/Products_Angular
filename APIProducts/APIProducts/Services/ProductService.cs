@@ -9,7 +9,7 @@ namespace APIProducts.Services
   {
     private readonly IMongoCollection<Product> _products;
 
-    public ProductService(IProductsDatabaseSettings settings)
+    public ProductService(IDatabaseSettings settings)
     {
       var client = new MongoClient(settings.ConnectionString);
       var database = client.GetDatabase(settings.DatabaseName);
@@ -17,10 +17,10 @@ namespace APIProducts.Services
     }
 
     public List<Product> Get() =>
-        _products.Find(product => true).ToList();
+        _products.Find("{}").ToList();
 
     public Product Get(string id) =>
-        _products.Find<Product>(product => product.Id == id).FirstOrDefault();
+        _products.Find<Product>(product => product.id == id).FirstOrDefault();
 
     public Product Create(Product product)
     {
@@ -28,13 +28,15 @@ namespace APIProducts.Services
       return product;
     }
 
-    public void Update(string id, Product productIn) =>
-        _products.ReplaceOne(product => product.Id == id, productIn);
+    public void Update(string id, Product productIn)
+    {
+      _products.ReplaceOne(f => f.id == id, productIn);
+    }
 
     public void Remove(Product productIn) =>
-        _products.DeleteOne(product => product.Id == productIn.Id);
+        _products.DeleteOne(product => product.id == productIn.id);
 
     public void Remove(string id) =>
-        _products.DeleteOne(product => product.Id == id);
+        _products.DeleteOne(product => product.id == id);
   }
 }

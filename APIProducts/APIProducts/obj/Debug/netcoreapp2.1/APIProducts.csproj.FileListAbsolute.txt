@@ -3,7 +3,6 @@ C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\bin\Debug\netcore
 C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\bin\Debug\netcoreapp2.1\APIProducts.runtimeconfig.dev.json
 C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\bin\Debug\netcoreapp2.1\APIProducts.dll
 C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\bin\Debug\netcoreapp2.1\APIProducts.pdb
-C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\obj\Debug\netcoreapp2.1\APIProducts.csprojAssemblyReference.cache
 C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\obj\Debug\netcoreapp2.1\APIProducts.csproj.CoreCompileInputs.cache
 C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\obj\Debug\netcoreapp2.1\APIProducts.RazorAssemblyInfo.cache
 C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\obj\Debug\netcoreapp2.1\APIProducts.RazorAssemblyInfo.cs
@@ -12,3 +11,4 @@ C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\obj\Debug\netcore
 C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\obj\Debug\netcoreapp2.1\APIProducts.RazorTargetAssemblyInfo.cache
 C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\obj\Debug\netcoreapp2.1\APIProducts.dll
 C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\obj\Debug\netcoreapp2.1\APIProducts.pdb
+C:\Users\andli\AngularProject\Products\APIProducts\APIProducts\obj\Debug\netcoreapp2.1\APIProducts.csprojAssemblyReference.cache

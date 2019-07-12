@@ -9,6 +9,12 @@ import { DetailBoxProductComponent } from './list-product/box-product/detail-box
 import { ProductRoutingModule } from './products-routing.module';
 import { ConfigureProductComponent } from './configure-product/configure-product.component';
 import { AngularMaterialModule } from '../shared/angular.material.module';
+import { ProductsEffects } from './store/products.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
+import { reducer } from './store/products.reducers';
+import { StoreModule } from '@ngrx/store';
+
 
 @NgModule({
   declarations: [
@@ -21,10 +27,13 @@ import { AngularMaterialModule } from '../shared/angular.material.module';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     FormsModule,
     ProductRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forFeature('products', reducer),
+    EffectsModule.forFeature([ProductsEffects])
   ],
   exports: [],
   providers: [],

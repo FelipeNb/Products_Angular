@@ -26,16 +26,18 @@ namespace APIProducts
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-      services.Configure<ProductsDatabaseSettings>(Configuration.GetSection(nameof(ProductsDatabaseSettings)));
-
-      services.AddSingleton<IProductsDatabaseSettings>(sp => sp.GetRequiredService<IOptions<ProductsDatabaseSettings>>().Value);
+      services.AddCors();
+      services.Configure<DatabaseSettings>(Configuration.GetSection(nameof(DatabaseSettings)));
+      services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
       services.AddSingleton<ProductService>();
+      services.AddSingleton<UserService>();
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
+      app.UseCors(c=> { c.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); });
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();

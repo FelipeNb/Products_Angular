@@ -30,7 +30,6 @@ export class EditRecipeComponent implements OnInit, OnDestroy {
 
       }
     );
-
   }
 
   ngOnDestroy() {

@@ -1,15 +1,15 @@
 <mat-card class="card mat-elevation-z2">
-  <mat-card-header class="text-center" style="display: block">
+  <mat-card-header class="text-center content-image" style="display: block">
     <img mat-card-image [src]="item.img" alt="Image" class="img" />
   </mat-card-header>
   <mat-card-content>
     <mat-card-title>{{ item.name }}</mat-card-title>
     Price: ${{ item.price }}
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button color="primary" (click)="showDetails = !showDetails">
+  <mat-card-actions class="text-center">
+    <!-- <button mat-button color="primary" (click)="showDetails = !showDetails">
       View recipe
-    </button>
+    </button> -->
     <button mat-button color="primary" (click)="onAddCar()">
       Add to car
     </button>

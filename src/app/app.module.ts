@@ -16,6 +16,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { RecipeModule } from './recipe/recipe.module';
 import { AngularMaterialModule } from './shared/angular.material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductsEffects } from './product/store/products.effects';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     CoreModule,
+    EffectsModule.forRoot([ProductsEffects]),
     ProductModule,
     ShopModule,
     RecipeModule,

@@ -1,4 +1,4 @@
-import { Product } from '../shared/product.model';
+import { Product } from './product.model';
 
 export class Shop {
   public product: Product;

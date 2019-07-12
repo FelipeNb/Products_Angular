@@ -1,4 +1,13 @@
-<div class="container">
+<div
+  class="text-center align-middle"
+  *ngIf="(shopListState | async).shops.length > 0"
+>
+  <hr />
+  <div class="row text-center">
+    <button mat-raised-button color="primary" (click)="onFinish()">
+      Finish
+    </button>
+  </div>
   <div class="row">
     <div class="table-responsive">
       <table class="table">
@@ -26,10 +35,7 @@
               <input type="number" class="form-control" [value]="item.amount" />
             </th>
             <th>
-              <button
-                cmat-raised-button color="accent"
-                (click)="onDelete(i)"
-              >
+              <button mat-raised-button color="warn" (click)="onDelete(i)">
                 Delete
               </button>
             </th>
@@ -37,8 +43,12 @@
         </tbody>
       </table>
     </div>
-    <button mat-raised-button color="primary" (click)="onFinish()">
-      Finish
-    </button>
   </div>
 </div>
+
+<h4
+  class="text-center align-middle"
+  *ngIf="(shopListState | async).shops.length == 0"
+>
+  No products inside a car!
+</h4>
